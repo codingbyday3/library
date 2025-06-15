@@ -101,6 +101,7 @@ main{
   grid-auto-rows: 300px;
   gap: 2rem;
   padding: var(--pd-default);
+  position: relative;
 }
 
 main div{
@@ -109,6 +110,17 @@ main div{
   border-radius: 5%;
   padding: 1rem;
 
+}
+
+dialog{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+dialog::backdrop{
+  background: url(images/library.jpg) center center / cover no-repeat;
 }
 
 main div,
