@@ -169,3 +169,25 @@ button[type="submit"]:hover{
   background-color: var(--clr-dark-brown-lighter);
   cursor: pointer;
 }
+
+.icon{
+  width: 30px;
+  height: 30px;
+  fill: white;
+}
+
+.form-x-container{
+  all: unset;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-x-container button{
+  background-color: transparent;
+  border: none;
+}
+
+.icon:hover{
+  fill: var(--clr-brown);
+  cursor: pointer;
+}
