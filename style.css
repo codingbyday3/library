@@ -2,9 +2,13 @@
   /* colors */
   --clr-background:#F4F1EA;
   --clr-primary-text:#2C2C2C;
-  --clr-accent:#8B5E3C;
-  --clr-navigation:#4A3F35;
+  --clr-accent:#4A3F35;
+  --clr-navigation:#A67C52;
   --clr-links:#A67C52;
+  --clr-book-container: rgba(255, 255, 255, 0.067);
+
+
+  
 
   /* font familys */
   --ff-text:"Roboto", sans-serif;
@@ -66,13 +70,19 @@ header{
 
 main{
   display: grid;
-  grid-template-columns: repeat(auto-fit, 250px);
+  grid-template-columns: repeat(auto-fit, 300px);
   grid-auto-rows: 300px;
-  gap: 1rem;
+  gap: 2rem;
   padding: 1rem;
 }
 
 main div{
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.067);
+  backdrop-filter: blur(8px);
   border-radius: 5%;
+  padding: 1rem;
+  color: white;
+  border-left: 1px solid rgba(255, 255, 255, 0.353);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.353);
+
 }
