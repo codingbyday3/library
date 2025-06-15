@@ -64,15 +64,3 @@ header{
   color: var(--clr-accent);
 }
 
-main{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 250px);
-  grid-auto-rows: 300px;
-  gap: 1rem;
-  padding: 1rem;
-}
-
-main div{
-  background-color: white;
-  border-radius: 5%;
-}
