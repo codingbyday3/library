@@ -1,3 +1,16 @@
+:root{
+  /* colors */
+  --clr-background:#F4F1EA;
+  --clr-primary-text:#2C2C2C;
+  --clr-accent:#8B5E3C;
+  --clr-navigation:#4A3F35;
+  --clr-links:#A67C52;
+
+  /* font familys */
+  --ff-text:"Roboto", sans-serif;
+  --ff-heading:"Space Grotesk", sans-serif;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -25,9 +38,11 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 p {
   text-wrap: pretty;
+  font-family: var(--ff-text);
 }
 h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
+  font-family: var(--ff-heading);
 }
 #root, #__next {
   isolation: isolate;
