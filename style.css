@@ -1,18 +1,27 @@
 :root{
   /* colors */
-  --clr-background:#F4F1EA;
-  --clr-primary-text:#2C2C2C;
-  --clr-accent:#4A3F35;
-  --clr-navigation:#A67C52;
-  --clr-links:#A67C52;
-  --clr-book-container: rgba(255, 255, 255, 0.067);
+  --clr-white:#F4F1EA;
+  --clr-black:#2C2C2C;
+  --clr-dark-brown:#4A3F35;
+  --clr-dark-brown-lighter:#67584a;
+  --clr-brown:#A67C52;
+  --clr-transparent: rgba(255, 255, 255, 0.067);
 
 
-  
+
+  --clr-primary-text:var(--clr-white);
+  --clr-accent:var(--clr-brown);
+  --clr-navigation:var(--clr-dark-brown);
+  --clr-book-container:var(--clr-transparent);
+  --clr-button:var(--clr-brown);
 
   /* font familys */
   --ff-text:"Roboto", sans-serif;
   --ff-heading:"Space Grotesk", sans-serif;
+
+  /* padding */
+
+  --pd-default:2rem;
 }
 
 *, *::before, *::after {
@@ -31,6 +40,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   background: url(images/library.jpg) center center / cover no-repeat fixed;
+  font-family: var(--ff-text);
 }
 img, picture, video, canvas, svg {
   display: block;
@@ -44,7 +54,6 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 p {
   text-wrap: pretty;
-  font-family: var(--ff-text);
 }
 h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
@@ -53,6 +62,9 @@ h1, h2, h3, h4, h5, h6 {
 #root, #__next {
   isolation: isolate;
 }
+h1{
+  font-size: 2rem;
+}
 
 body{
   display: grid;
@@ -60,12 +72,27 @@ body{
   gap: 2rem;
 }
 
-header{
+nav{
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: var(--pd-default);
   background-color: var(--clr-navigation);
   color: var(--clr-accent);
+}
+
+nav button{
+  background-color: var(--clr-button);
+  color: var(--clr-black);
+  width: 150px;
+  border-radius: 10px;
+  border: none;
+}
+
+nav button:hover{
+  color: var(--clr-brown);
+  background-color: var(--clr-dark-brown-lighter);
+  cursor: pointer;
 }
 
 main{
@@ -73,15 +100,15 @@ main{
   grid-template-columns: repeat(auto-fit, 300px);
   grid-auto-rows: 300px;
   gap: 2rem;
-  padding: 1rem;
+  padding: var(--pd-default);
 }
 
 main div{
-  background-color: rgba(255, 255, 255, 0.067);
+  background-color: var(--clr-transparent);
   backdrop-filter: blur(8px);
   border-radius: 5%;
   padding: 1rem;
-  color: white;
+  color: rgb(249, 236, 175);
   border-left: 1px solid rgba(255, 255, 255, 0.353);
   border-bottom: 1px solid rgba(255, 255, 255, 0.353);
 
