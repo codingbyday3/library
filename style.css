@@ -104,12 +104,44 @@ main{
 }
 
 main div{
-  background-color: var(--clr-transparent);
+
   backdrop-filter: blur(8px);
   border-radius: 5%;
   padding: 1rem;
-  color: rgb(249, 236, 175);
+
+}
+
+main div,
+dialog{
   border-left: 1px solid rgba(255, 255, 255, 0.353);
   border-bottom: 1px solid rgba(255, 255, 255, 0.353);
+  box-shadow: 0 0 15px black;
+  background-color: var(--clr-transparent);
+  backdrop-filter: blur(8px);
+  color: var(--clr-white);
+  border: none;
+  border-radius: 10px;
+}
+
+dialog input,
+dialog textarea{
+  width: 400px;
+  margin-bottom: 20px;
+  appearance: none;
+}
+dialog input{
+  border: none;
+  border-radius: 5px;
+  padding: 0 10px;
+  height: 30px;
+}
+
+dialog textarea{
+  height: 100px;
+  resize: none;
+}
+dialog form{
+  display: flex;
+  flex-direction: column;
 
 }
