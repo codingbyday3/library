@@ -87,6 +87,7 @@ nav button{
   border-radius: 10px;
   border: none;
 }
+.is-read:hover,
 .delete-btn:hover,
 nav button:hover{
   color: var(--clr-brown);
@@ -103,7 +104,7 @@ main{
   position: relative;
 }
 
-main div{
+main .book{
   background-color: var(--clr-dark-brown);
   color: var(--clr-brown);
   border-left: 15px solid var(--clr-black);
@@ -116,6 +117,13 @@ main div{
   position: relative;
 }
 
+.book div{
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  align-items: end;
+
+}
 
 dialog{
   position: absolute;
@@ -227,13 +235,12 @@ form label{
   color: var(--clr-light-brown);
 }
 
+.is-read,
 .delete-btn{
   width: 75px;
   border: none;
   border-radius: 10px;
-  position: absolute;
-  right: 20px;
-  bottom:20px;
+
   background-color: var(--clr-button);
   color: var(--clr-black);
 }

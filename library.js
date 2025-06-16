@@ -4,17 +4,21 @@ const closeBookForm = document.querySelector(".icon")
 const bookContainer = document.querySelector("main")
 const submitBtn = document.querySelector(".submit-btn")
 const deleteBtn = document.querySelector(".delete-btn")
+const form = document.querySelector('form');
 
-function Book(title, author, year, comment){
+
+function Book(title, author,comment){
   if(!new.target){
     throw Error("You must use 'new' operator")
   }
   this.id = crypto.randomUUID()
   this.title = title
   this.author = author
-  this.year = year
+  this.read = false
   this.comment = comment
 }
+
+
 
 let books = []
 
@@ -28,6 +32,11 @@ function main(){
       handleDeleteBtn(e)
     }
   })
+
+  form.addEventListener("submit", (e) => {
+  e.preventDefault(); // Prevent default form submission
+  handleSubmitBtn();
+});
 
 }
 
@@ -43,6 +52,7 @@ function createLabeledParagraph(label, value) {
 
 function displayBook(bookDetails) {
   const bookDiv = document.createElement("div");
+  bookDiv.className = "book"
   bookDiv.dataset.id = bookDetails.id
 
   const h2 = document.createElement("h2");
@@ -56,12 +66,18 @@ function displayBook(bookDetails) {
       bookDiv.appendChild(createLabeledParagraph(label, bookDetails[bookDetail]));
     }
   }
-
+  const buttonDiv = document.createElement("div")
   const deleteBtn = document.createElement("button")
   deleteBtn.className = "delete-btn"
   deleteBtn.textContent = "Delete"
-  bookDiv.appendChild(deleteBtn)
+  buttonDiv.appendChild(deleteBtn)
 
+  const readButton = document.createElement("button")
+  readButton.className = "is-read"
+  readButton.textContent = "Read"
+  buttonDiv.appendChild(readButton)
+
+  bookDiv.appendChild(buttonDiv)
   bookContainer.prepend(bookDiv);
 }
 
@@ -79,17 +95,13 @@ function displayDialog(){
 function handleSubmitBtn(){
   const bookTitle = document.querySelector("#title").value
   const bookAuthor = document.querySelector("#author").value
-  const bookPublicationYear = document.querySelector("#year").value
   let bookComment = document.querySelector("#comment").value
 
 
-  if(!bookTitle || !bookAuthor || !bookPublicationYear){
+  if(!bookTitle || !bookAuthor){
     alert("Fill all empty fields!");
     return;
-  }else if(Math.abs(bookPublicationYear).toString().length > 4){
-    alert("Invalid year!");
-    return;
-  }else if(bookComment.length > 60){
+  }else if(bookComment.length > 20){
     alert("Comment is too long");
     return;
   }else if(!bookComment){
@@ -97,7 +109,7 @@ function handleSubmitBtn(){
   }
 
 
-  const book = new Book(bookTitle, bookAuthor, bookPublicationYear, bookComment)
+  const book = new Book(bookTitle, bookAuthor,bookComment)
   books.push(book)
   displayBook(book)
   document.querySelector('form').reset()
@@ -119,10 +131,5 @@ function handleDeleteBtn(e){
   }
 }
 
-const form = document.querySelector('form');
-form.addEventListener("submit", (e) => {
-  e.preventDefault(); // Prevent default form submission
-  handleSubmitBtn();
-});
 
 main()

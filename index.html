@@ -16,23 +16,21 @@
   </nav>
   <main>
 
+
     <dialog>
       <form action="" method="dialog" autocomplete="off">
         <div class="form-x-container">
           <h2>Add book</h2>
           <p class="icon">X</p>
         </div>
-        <label for="title">Titlt:</label>
+        <label for="title">Title:</label>
         <input id="title" placeholder="e.g. Harry Potter" type="text" name="book-title" autocomplete="off" required>
 
         <label for="author">Author:</label>
         <input id="author" placeholder="e.g. J. K. Rowling" type="text" name="book-author" autocomplete="off" required>
 
-        <label for="year">Publication year:</label>
-        <input type="tel" placeholder="e.g. 1997" name="book-year" id="year" maxlength="4" pattern="\d{4}" title="Please enter valid year" autocomplete="off" required>
-
         <label for="comment">Comment:</label>
-        <textarea maxlength="40" name="book-comment" id="comment"></textarea>
+        <textarea maxlength="20" name="book-comment" id="comment"></textarea>
 
         <button class="submit-btn" type="submit">Add book</button>
       </form>
