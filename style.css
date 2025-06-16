@@ -125,7 +125,8 @@ dialog{
 }
 
 dialog::backdrop{
-  background: url(images/library.jpg) center center / cover no-repeat;
+  background-color: black;
+  opacity: 0.4;
 }
 
 dialog{
@@ -194,4 +195,9 @@ button[type="submit"]:hover{
 .icon:hover{
   fill: var(--clr-brown);
   cursor: pointer;
+}
+
+.book-label{
+  font-weight: bold;
+  color: #d29d69;
 }
