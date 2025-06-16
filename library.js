@@ -24,7 +24,9 @@ function main(){
   displayDialog()
 
   bookContainer.addEventListener("click", (e)=>{
-    handleDeleteBtn(e)
+    if(e.target.classList.contains("delete-btn")){
+      handleDeleteBtn(e)
+    }
   })
 
 }
@@ -103,6 +105,7 @@ function handleSubmitBtn(){
 }
 
 function handleDeleteBtn(e){
+
   const bookDiv = e.target.closest("div[data-id]");
   if (bookDiv) {
     const bookId = bookDiv.dataset.id;
