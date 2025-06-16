@@ -90,7 +90,7 @@ nav button{
   border-radius: 10px;
   border: none;
 }
-
+.delete-btn:hover,
 nav button:hover{
   color: var(--clr-brown);
   background-color: var(--clr-dark-brown-lighter);
@@ -116,6 +116,7 @@ main div{
   flex-direction: column;
   gap: 1rem;
   box-shadow: 0 0 10px black;
+  position: relative;
 }
 
 
@@ -228,3 +229,15 @@ form h2{
 form label{
   color: var(--clr-light-brown);
 }
+
+.delete-btn{
+  width: 75px;
+  border: none;
+  border-radius: 10px;
+  position: absolute;
+  right: 20px;
+  bottom:20px;
+  background-color: var(--clr-button);
+  color: var(--clr-black);
+}
+
