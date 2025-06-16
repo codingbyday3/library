@@ -2,17 +2,31 @@ const addBookBtn = document.querySelector(".add-book-btn")
 const addBookForm = document.querySelector("dialog")
 const closeBookForm = document.querySelector(".icon")
 const bookContainer = document.querySelector("main")
-book = {
+books = [{
   id:crypto.randomUUID(),
   title:"Harry Potter",
   author:"J. K. Rowling",
   year:1997,
   comment:"Book was really good I can't wait to read it again!"
-}
+},{
+  id:crypto.randomUUID(),
+  title:"The Lord of the Rings",
+  author:"J.R.R. Tolkien",
+  year:1954,
+  comment:"Book was really good I can't wait to read it again!"
+},{
+  id:crypto.randomUUID(),
+  title:"The Da Vinci Code",
+  author:"Dan Brown",
+  year:2003,
+  comment:"Book was really good I can't wait to read it again!"
+}]
 
 function main(){
   displayDialog()
-  displayBook(book)
+  for (book of books){
+    displayBook(book)
+  }
 }
 
 function displayBook(bookDetails){

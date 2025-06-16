@@ -17,24 +17,25 @@
   <main>
 
     <dialog>
-      <form action="" method="dialog">
+      <form action="" method="dialog" autocomplete="off">
         <div class="form-x-container">
           <h2>Add book</h2>
           <button>
-            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <title>alpha-x</title>
-              <path d="M9,7L11,12L9,17H11L12,14.5L13,17H15L13,12L15,7H13L12,9.5L11,7H9Z" />
-            </svg>
+            <span class="icon">X</span>
           </button>
         </div>
         <label for="title">Titlt:</label>
-        <input id="title" placeholder="e.g. Harry Potter" type="text">
+        <input id="title" placeholder="e.g. Harry Potter" type="text" name="book-title" autocomplete="off" required>
+
         <label for="author">Author:</label>
-        <input id="author" placeholder="e.g. J. K. Rowling" type="text">
+        <input id="author" placeholder="e.g. J. K. Rowling" type="text" name="book-author" autocomplete="off" required>
+
         <label for="year">Publication year:</label>
-        <input type="tel" placeholder="e.g. 1997" name="" id="year">
+        <input type="tel" placeholder="e.g. 1997" name="book-year" id="year" maxlength="4" pattern="\d{4}" title="Please enter valid year" autocomplete="off" required>
+
         <label for="comment">Comment:</label>
-        <textarea name="" id=""></textarea>
+        <textarea maxlength="60" name="book-comment" id="comment"></textarea>
+
         <button class="submit-btn" type="submit">Add book</button>
       </form>
     </dialog>
