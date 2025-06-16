@@ -105,12 +105,17 @@ main{
 }
 
 main div{
-
-  backdrop-filter: blur(8px);
-  border-radius: 5%;
+  background-color: var(--clr-dark-brown);
+  color: var(--clr-brown);
+  border-left: 15px solid var(--clr-black);
+  border-bottom: 1px solid var(--clr-white);
   padding: 1rem;
-
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 0 10px black;
 }
+
 
 dialog{
   position: absolute;
@@ -123,7 +128,6 @@ dialog::backdrop{
   background: url(images/library.jpg) center center / cover no-repeat;
 }
 
-main div,
 dialog{
   border-left: 1px solid rgba(255, 255, 255, 0.353);
   border-bottom: 1px solid rgba(255, 255, 255, 0.353);
