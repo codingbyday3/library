@@ -2,35 +2,23 @@ const addBookBtn = document.querySelector(".add-book-btn")
 const addBookForm = document.querySelector("dialog")
 const closeBookForm = document.querySelector(".icon")
 const bookContainer = document.querySelector("main")
-books = [{
-  id:crypto.randomUUID(),
-  title:"Harry Potter",
-  author:"J. K. Rowling",
-  year:1997,
-  comment:"Book was really good I can't wait to read it again!"
-},{
-  id:crypto.randomUUID(),
-  title:"The Lord of the Rings",
-  author:"J.R.R. Tolkien",
-  year:1954,
-  comment:"Book was really good I can't wait to read it again!"
-},{
-  id:crypto.randomUUID(),
-  title:"The Da Vinci Code",
-  author:"Dan Brown",
-  year:2003,
-  comment:"Book was really good I can't wait to read it again!"
-}]
+const submitBtn = document.querySelector(".submit-btn")
+
+function Book(title, author, year, comment){
+  this.title = title
+  this.author = author
+  this.year = year
+  this.comment = comment
+}
+
+
 
 function main(){
   displayDialog()
-  for (book of books){
-    displayBook(book)
-  }
-}
+  submitBtn.addEventListener("click", ()=>{
+    handleSubmitBtn()
+  })
 
-function displayBook(bookDetails){
-  createHtml(bookDetails)
 }
 
 function createLabeledParagraph(label, value) {
@@ -43,7 +31,7 @@ function createLabeledParagraph(label, value) {
   return para;
 }
 
-function createHtml(bookDetails) {
+function displayBook(bookDetails) {
   const bookDiv = document.createElement("div");
 
   const h2 = document.createElement("h2");
@@ -71,6 +59,25 @@ function displayDialog(){
     addBookForm.close()
   })
 
+}
+
+function handleSubmitBtn(){
+  const bookTitle = document.querySelector("#title").value
+  const bookAuthor = document.querySelector("#author").value
+  const bookPublicationYear = document.querySelector("#year").value
+  const bookComment = document.querySelector("#comment").value
+  checkErrors()
+  
+}
+
+function checkErrors(){
+  if(!bookTitle || !bookAuthor || !bookPublicationYear){
+    alert("Fill all empty fields!")
+  }else if(Math.abs(bookPublicationYear).toString().length > 4){
+    alert("Invalid year")
+  }else if(bookComment.length > 60){
+    alert("Comment is to long")
+  }
 }
 
 main()
