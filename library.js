@@ -3,6 +3,7 @@ const addBookForm = document.querySelector("dialog")
 const closeBookForm = document.querySelector(".icon")
 const bookContainer = document.querySelector("main")
 const submitBtn = document.querySelector(".submit-btn")
+const deleteBtn = document.querySelector(".delete-btn")
 
 function Book(title, author, year, comment){
   if(!new.target){
@@ -24,7 +25,9 @@ function main(){
   submitBtn.addEventListener("click", ()=>{
     handleSubmitBtn()
   })
-  console.log(books)
+  bookContainer.addEventListener("click", (e)=>{
+    handleDeleteBtn(e)
+  })
 
 }
 
@@ -40,6 +43,7 @@ function createLabeledParagraph(label, value) {
 
 function displayBook(bookDetails) {
   const bookDiv = document.createElement("div");
+  bookDiv.dataset.id = bookDetails.id
 
   const h2 = document.createElement("h2");
   h2.textContent = bookDetails.title;
@@ -52,7 +56,11 @@ function displayBook(bookDetails) {
       bookDiv.appendChild(createLabeledParagraph(label, bookDetails[bookDetail]));
     }
   }
-  
+
+  const deleteBtn = document.createElement("button")
+  deleteBtn.className = "delete-btn"
+  deleteBtn.textContent = "Delete"
+  bookDiv.appendChild(deleteBtn)
 
   bookContainer.prepend(bookDiv);
 }
@@ -80,7 +88,7 @@ function handleSubmitBtn(){
     alert("Invalid year!")
   }else if(bookComment.length > 60){
     alert("Comment is to long")
-  }else if(bookComment === ""){
+  }else if(!bookComment){
     bookComment = "No comment"
   }
   const book = new Book(bookTitle, bookAuthor, bookPublicationYear, bookComment)
@@ -88,6 +96,20 @@ function handleSubmitBtn(){
   displayBook(book)
   document.querySelector('form').reset()
   document.querySelector('dialog').close()
+}
+
+function handleDeleteBtn(e){
+  const bookDiv = e.target.closest("div[data-id]");
+  if (bookDiv) {
+    const bookId = bookDiv.dataset.id;
+    for(let i = 0; i < books.length; i++){
+      if (books[i].id === bookId){
+        books.splice(i,1)
+        break
+      } 
+    }
+    bookDiv.remove()
+  }
 }
 
 main()
