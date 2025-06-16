@@ -22,9 +22,7 @@ let books = []
 
 function main(){
   displayDialog()
-  submitBtn.addEventListener("click", ()=>{
-    handleSubmitBtn()
-  })
+
   bookContainer.addEventListener("click", (e)=>{
     handleDeleteBtn(e)
   })
@@ -82,15 +80,21 @@ function handleSubmitBtn(){
   const bookPublicationYear = document.querySelector("#year").value
   let bookComment = document.querySelector("#comment").value
 
+
   if(!bookTitle || !bookAuthor || !bookPublicationYear){
-    alert("Fill all empty fields!")
+    alert("Fill all empty fields!");
+    return;
   }else if(Math.abs(bookPublicationYear).toString().length > 4){
-    alert("Invalid year!")
+    alert("Invalid year!");
+    return;
   }else if(bookComment.length > 60){
-    alert("Comment is to long")
+    alert("Comment is too long");
+    return;
   }else if(!bookComment){
-    bookComment = "No comment"
+    bookComment = "No comment";
   }
+
+
   const book = new Book(bookTitle, bookAuthor, bookPublicationYear, bookComment)
   books.push(book)
   displayBook(book)
@@ -111,5 +115,11 @@ function handleDeleteBtn(e){
     bookDiv.remove()
   }
 }
+
+const form = document.querySelector('form');
+form.addEventListener("submit", (e) => {
+  e.preventDefault(); // Prevent default form submission
+  handleSubmitBtn();
+});
 
 main()
