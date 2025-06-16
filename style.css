@@ -6,6 +6,8 @@
   --clr-dark-brown-lighter:#67584a;
   --clr-brown:#A67C52;
   --clr-transparent: rgba(255, 255, 255, 0.067);
+  --clr-light-brown:#d8a068;
+  --clr-red:rgb(178, 57, 17);
 
 
 
@@ -130,11 +132,8 @@ dialog::backdrop{
 }
 
 dialog{
-  border-left: 1px solid rgba(255, 255, 255, 0.353);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.353);
+  background-color: var(--clr-dark-brown);
   box-shadow: 0 0 15px black;
-  background-color: var(--clr-transparent);
-  backdrop-filter: blur(8px);
   color: var(--clr-white);
   border: none;
   border-radius: 10px;
@@ -178,13 +177,14 @@ button[type="submit"]:hover{
 .icon{
   width: 30px;
   height: 30px;
-  color: white;
+  color: var(--clr-red);
   font-weight: bold;
 }
 
 .form-x-container{
   all: unset;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -206,4 +206,25 @@ button[type="submit"]:hover{
 input:focus,
 textarea:focus{
   outline: none;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.334);
+}
+
+input,
+textarea{
+  background-color: var(--clr-brown);
+  color: var(--clr-white);
+  border: none;
+}
+
+input::placeholder{
+  color: rgba(255, 255, 255, 0.397);
+}
+
+form h2{
+  color: var(--clr-light-brown);
+  font-size: 2rem;
+}
+
+form label{
+  color: var(--clr-light-brown);
 }
