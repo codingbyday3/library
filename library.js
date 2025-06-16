@@ -3,8 +3,8 @@ const addBookForm = document.querySelector("dialog")
 const closeBookForm = document.querySelector(".icon")
 const bookContainer = document.querySelector("main")
 const submitBtn = document.querySelector(".submit-btn")
-const deleteBtn = document.querySelector(".delete-btn")
 const form = document.querySelector('form');
+let books = []
 
 
 function Book(title, author,comment){
@@ -18,9 +18,9 @@ function Book(title, author,comment){
   this.comment = comment
 }
 
-
-
-let books = []
+Book.prototype.changeReadStatus = function(){
+  this.read = !this.read
+} 
 
 
 
@@ -31,12 +31,15 @@ function main(){
     if(e.target.classList.contains("delete-btn")){
       handleDeleteBtn(e)
     }
+    if(e.target.classList.contains("is-read")){
+      handleToggleReadBtn(e)
+    }
   })
 
   form.addEventListener("submit", (e) => {
-  e.preventDefault(); // Prevent default form submission
+  e.preventDefault(); 
   handleSubmitBtn();
-});
+  });
 
 }
 
@@ -61,7 +64,7 @@ function displayBook(bookDetails) {
 
 
   for(let bookDetail in bookDetails){
-    if (bookDetail != "id"){
+    if (bookDetail != "id" && bookDetail != "changeReadStatus"){
       label = bookDetail.charAt(0).toUpperCase() + bookDetail.slice(1) + ":"
       bookDiv.appendChild(createLabeledParagraph(label, bookDetails[bookDetail]));
     }
@@ -128,6 +131,22 @@ function handleDeleteBtn(e){
       } 
     }
     bookDiv.remove()
+  }
+}
+
+function handleToggleReadBtn(e){
+  const bookDiv = e.target.closest("div[data-id]");
+  if (bookDiv) {
+    const bookId = bookDiv.dataset.id;
+    for(let book of books){
+      if (book.id === bookId){
+        book.changeReadStatus()
+        bookDiv.remove()
+        displayBook(book)
+        break
+      } 
+    }
+    
   }
 }
 
