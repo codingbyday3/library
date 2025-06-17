@@ -44,6 +44,9 @@ function main(){
 }
 
 function createLabeledParagraph(label, value) {
+  if(label == "Read:"){
+    value = value ? "did read":"didn't read"
+  }
   const para = document.createElement("p");
   const span = document.createElement("span");
   span.className = "book-label";
