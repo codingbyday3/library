@@ -7,20 +7,21 @@ const form = document.querySelector('form');
 let books = []
 
 
-function Book(title, author,comment){
-  if(!new.target){
-    throw Error("You must use 'new' operator")
-  }
-  this.id = crypto.randomUUID()
-  this.title = title
-  this.author = author
-  this.read = false
-  this.comment = comment
-}
+class Book{
 
-Book.prototype.changeReadStatus = function(){
-  this.read = !this.read
-} 
+  constructor(title, author,comment){
+    this.id = crypto.randomUUID()
+    this.title = title
+    this.author = author
+    this.read = false
+    this.comment = comment
+  }
+
+  changeReadStatus(){
+    this.read = !this.read
+  }
+
+}
 
 
 
@@ -37,8 +38,8 @@ function main(){
   })
 
   form.addEventListener("submit", (e) => {
-  e.preventDefault(); 
-  handleSubmitBtn();
+    e.preventDefault(); 
+    handleSubmitBtn();
   });
 
 }
