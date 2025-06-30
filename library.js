@@ -37,6 +37,7 @@ function main(){
     }
   })
 
+
   form.addEventListener("submit", (e) => {
     e.preventDefault(); 
     handleSubmitBtn();
@@ -103,17 +104,6 @@ function handleSubmitBtn(){
   const bookTitle = document.querySelector("#title").value
   const bookAuthor = document.querySelector("#author").value
   let bookComment = document.querySelector("#comment").value
-
-
-  if(!bookTitle || !bookAuthor){
-    alert("Fill all empty fields!");
-    return;
-  }else if(bookComment.length > 20){
-    alert("Comment is too long");
-    return;
-  }else if(!bookComment){
-    bookComment = "No comment";
-  }
 
 
   const book = new Book(bookTitle, bookAuthor,bookComment)
