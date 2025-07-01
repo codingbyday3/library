@@ -4,6 +4,9 @@ const closeBookForm = document.querySelector(".icon")
 const bookContainer = document.querySelector("main")
 const submitBtn = document.querySelector(".submit-btn")
 const form = document.querySelector('form');
+const bookTitle = document.querySelector("#title")
+const bookAuthor = document.querySelector("#author")
+let bookComment = document.querySelector("#comment")
 let books = []
 
 
@@ -39,9 +42,30 @@ function main(){
 
 
   form.addEventListener("submit", (e) => {
-    e.preventDefault(); 
-    handleSubmitBtn();
+
+    if(!bookTitle.validity.valid){
+      showError()
+      bookTitle.reportValidity()
+      e.preventDefault(); 
+
+    }else if(!bookAuthor.validity.valid){
+      showError()
+      bookAuthor.reportValidity()
+      e.preventDefault(); 
+    }else{
+      
+      handleSubmitBtn();
+    }
   });
+
+  bookTitle.addEventListener("input", ()=>{
+    bookTitle.setCustomValidity("")
+  })
+
+  bookAuthor.addEventListener("input", ()=>{
+    bookAuthor.setCustomValidity("")
+  })
+
 
 }
 
@@ -101,12 +125,9 @@ function displayDialog(){
 }
 
 function handleSubmitBtn(){
-  const bookTitle = document.querySelector("#title").value
-  const bookAuthor = document.querySelector("#author").value
-  let bookComment = document.querySelector("#comment").value
 
 
-  const book = new Book(bookTitle, bookAuthor,bookComment)
+  const book = new Book(bookTitle.value, bookAuthor.value,bookComment.value)
   books.push(book)
   displayBook(book)
   document.querySelector('form').reset()
@@ -144,5 +165,14 @@ function handleToggleReadBtn(e){
   }
 }
 
+function showError(){
+  if(bookTitle.validity.valueMissing){
+    bookTitle.setCustomValidity("You must enter the title of the book")
+
+  }else if(bookAuthor.validity.valueMissing){
+    bookAuthor.setCustomValidity("You must enter the author of the book")
+
+  }
+}
 
 main()
